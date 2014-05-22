@@ -1,6 +1,6 @@
 from django.shortcuts import (render, render_to_response)
 from django.http import HttpResponse
-import unirest
+import requests
 import urllib
 import urllib2
 
@@ -19,9 +19,11 @@ def homepage(request):
                                                           'momlist': momlist,'get_loadshedding':get_load,
                                                           'kalimati_Info':kalimati_Info,
                                                           })
+
 def get_loadshedding():
-	response = unirest.get("http://loadshedding.sparrowsms.com/?group=1");
-	return response.body
+    response = requests.get("http://loadshedding.sparrowsms.com/?group=1")
+    print response
+    return response.text
 
 def kalimatiInfo(request):
     params = urllib.urlencode({'cdate': '05/21/2014', 'pricetype': 'W'})
@@ -33,6 +35,6 @@ def kalimati_url():
     return 'http://kalimatimarket.com.np/priceinfo/dlypricebulletin'
 
 def weather_present_location():
-    response = unirest.get('http://api.worldweatheronline.com/free/v1/weather.ashx?q=Nepal&format=json&num_of_days=5&date=2014-05-26&key=rwj6dbhpzame5ka6mfyma2j9')
-    
+    response = requests.get('http://api.worldweatheronline.com/free/v1/weather.ashx?q=Nepal&format=json&num_of_days=5&date=2014-05-26&key=rwj6dbhpzame5ka6mfyma2j9')
+
 

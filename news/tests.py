@@ -1,6 +1,5 @@
 from django.test import TestCase
 from news.views import kalimati_url
-import unirest
 from django.test.client import Client
 # Create your tests here.
 class TestHomePage(TestCase):
