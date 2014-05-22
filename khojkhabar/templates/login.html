@@ -1,0 +1,118 @@
+{% load staticfiles %}
+{% load bootstrap3%}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Sign in &middot; Twitter Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+
+      .form-signin {
+        max-width: 350px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 18px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+
+    </style>
+  </head>
+
+  <body class="login-body">
+
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1503590526527654&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+    <div class="container">
+
+      <form class="form-signin" action="" method="post">
+        <h2 class="form-signin-heading">Please Sign in</h2>
+        <div class="login-wrap">
+            {% csrf_token %}
+            
+        {% if form.errors %}
+            <div style="text-align: center; "class="alert alert-danger">
+                <span >Your username and password didn't match. Please try again.</span>
+            </div>
+        {% endif %}
+            <div class="form-group has-error" >
+                <div class="">
+                    <input type="text" name="username" id="id_username" class="form-control" placeholder="Username" autofocus>
+                        <span class="help-block">{{ form.username.errors }}</span>
+                        <p class="help-block">
+                            {{form.username.help_text}}
+                        </p>
+                </div>
+            </div>
+            <div class="form-group has-error" >
+                <div class="">
+                    <input type="password" name="password" id="id_password" class="form-control" placeholder="Password">
+                        <span class="help-block">{{ form.password.errors }}</span>
+                        <p class="help-block">
+                        {{form.password.help_text}}
+                        </p>
+                </div>
+            </div>
+            
+            <label class="checkbox">
+                <input type="checkbox" value="remember-me"> Remember me
+                
+            </label>
+            <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+            <div class="fb-login-buttons" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
+            <hr>
+            <div class="registration">
+                Don't have an account yet? <br>
+                <a class="" href="registration.html">
+                    Create an account
+                </a>
+                <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
+            </div>
+
+        </div>
+
+      </form>
+
+    </div>
+
+    </div> <!-- /container -->
+
+  </body>
+</html>
