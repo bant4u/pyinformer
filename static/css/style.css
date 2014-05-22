@@ -243,9 +243,7 @@
 		background-image: linear-gradient(top, #ce1a00, #ed391b);
 	}
 
-	.kalimati{
+	#time-temp{
+		color: white;
 		float: right;
-		height: 150px;
-		width: 100px;
-		position: absolute;
-	}
+		}
